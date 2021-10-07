@@ -85,7 +85,7 @@ class OnboardingView extends StatelessWidget {
                       )
                     : GetStartedButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, SignUpRoute);
+                          Navigator.pushNamed(context, SIGN_UP_ROUTE);
                         },
                       ),
               ],

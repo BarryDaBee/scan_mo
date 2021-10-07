@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:scan_mo/ui/views/onboarding_view.dart';
 import 'package:scan_mo/core/routes.dart' as routes;
 
-void main() {
-  setupLocator();
+import 'core/services/call_log_service.dart';
 
+void main() async {
+  setupLocator();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 

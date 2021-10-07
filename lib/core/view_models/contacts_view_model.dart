@@ -15,5 +15,6 @@ class ContactsViewModel extends BaseViewModel {
     permissionService.getContactsPermission();
     contacts = await contactsService.getContacts();
     setBusy(false);
+    notifyListeners();
   }
 }

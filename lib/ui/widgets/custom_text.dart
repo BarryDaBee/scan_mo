@@ -15,7 +15,6 @@ class CustomText extends StatelessWidget {
     return Text(
       text,
       style: GoogleFonts.poppins(
-        
         fontWeight: fontWeight,
         color: color,
         fontSize: fontSize,

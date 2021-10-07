@@ -114,7 +114,7 @@ class SignUpView extends StatelessWidget {
             CustomElevatedButton(
               text: "Done",
               onPressed: () {
-                Navigator.pushNamed(context, HomeViewRoute);
+                Navigator.pushNamed(context, HOME_VIEW_ROUTE);
               },
             ),
           ],
