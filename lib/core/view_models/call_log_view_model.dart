@@ -5,7 +5,7 @@ import 'package:scan_mo/core/services/permission_service.dart';
 
 class CallLogHomeViewModel extends BaseViewModel {
   final callLogService = locator<CallLogService>();
-  Iterable<CallLogEntry> callLogs;
+  Iterable<CallLogEntry>? callLogs;
   final permissionService = locator<PermissionService>();
   void getCallLogs() async {
     //await permissionService.getContactsPermission();

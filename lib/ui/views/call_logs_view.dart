@@ -24,26 +24,18 @@ class CallLogsHomeView extends StatelessWidget {
                           fontWeight: FontWeight.w700,
                           fontSize: 24,
                         ),
-                        SizedBox(height: 20.h),
+                        SizedBox(height: 10.h),
                         Expanded(
-                          child: ListView.separated(
+                          child: ListView.builder(
                             physics: BouncingScrollPhysics(),
                             padding: EdgeInsets.zero,
                             shrinkWrap: true,
                             itemBuilder: (context, index) {
-                              print({
-                                model.callLogs.elementAt(index).number:
-                                    model.callLogs.elementAt(index).callType
-                              });
                               return CallLogTile(
-                                callLogEntry: model.callLogs.elementAt(index),
+                                callLogEntry: model.callLogs!.elementAt(index),
                               );
                             },
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return SizedBox(height: 20.h);
-                            },
-                            itemCount: model.callLogs.length,
+                            itemCount: model.callLogs!.length,
                           ),
                         ),
                       ],
