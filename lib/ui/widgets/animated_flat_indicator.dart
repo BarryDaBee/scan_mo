@@ -4,7 +4,7 @@ import 'package:scan_mo/ui/shared/colors.dart';
 
 class AnimatedFlatIndicator extends StatefulWidget {
   const AnimatedFlatIndicator({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -13,12 +13,12 @@ class AnimatedFlatIndicator extends StatefulWidget {
 
 class _AnimatedFlatIndicatorState extends State<AnimatedFlatIndicator>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  AnimationController? _controller;
 
   @override
   void dispose() {
     // TODO: implement dispose
-    _controller.dispose();
+    _controller!.dispose();
     super.dispose();
   }
 
@@ -27,10 +27,10 @@ class _AnimatedFlatIndicatorState extends State<AnimatedFlatIndicator>
     // TODO: implement initState
     _controller =
         AnimationController(vsync: this, duration: Duration(milliseconds: 200));
-    _controller.addListener(() {
+    _controller!.addListener(() {
       setState(() {});
     });
-    _controller.forward();
+    _controller!.forward();
     super.initState();
   }
 
@@ -39,7 +39,7 @@ class _AnimatedFlatIndicatorState extends State<AnimatedFlatIndicator>
     return Container(
       height: 7.h,
       margin: EdgeInsets.symmetric(horizontal: 3.w),
-      width: 30.w * _controller.value,
+      width: 30.w * _controller!.value,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(7.r),
         color: BrandColors.primary,

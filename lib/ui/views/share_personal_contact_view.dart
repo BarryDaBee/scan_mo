@@ -18,7 +18,7 @@ class SharePersonalContactView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: () {},
+                  onTap: Navigator.of(context).pop,
                   child: Container(
                     height: 30.r,
                     width: 30.r,
@@ -118,7 +118,7 @@ class SharePersonalContactView extends StatelessWidget {
 class SelectedSimCard extends StatelessWidget {
   final bool isActive;
 
-  const SelectedSimCard({Key key, this.isActive = false}) : super(key: key);
+  const SelectedSimCard({Key? key, this.isActive = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

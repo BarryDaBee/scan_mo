@@ -4,15 +4,15 @@ import 'package:scan_mo/ui/widgets/animated_flat_indicator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomPageIndicator extends StatelessWidget {
-  final int noOfPages;
-  final int currentIndex;
+  final int? noOfPages;
+  final int? currentIndex;
 
-  const CustomPageIndicator({Key key, this.noOfPages, this.currentIndex})
-      : super(key: key);
+  const CustomPageIndicator({@required this.noOfPages, this.currentIndex})
+      : assert(noOfPages != 0, 'Number of pages cannot be zero');
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: List.generate(noOfPages, (index) {
+      children: List.generate(noOfPages!, (index) {
         if (index == currentIndex) {
           return AnimatedFlatIndicator();
         } else {

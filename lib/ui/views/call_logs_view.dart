@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scan_mo/core/exports.dart';
-import 'package:scan_mo/core/view_models/call_log_home_view_model.dart';
+import 'package:scan_mo/core/view_models/call_log_view_model.dart';
 import 'package:scan_mo/ui/widgets/call_log_tile.dart';
 
-class CallLogsHomeView extends StatelessWidget {
+class CallLogsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ViewModelBuilder<CallLogHomeViewModel>.reactive(
+    return ViewModelBuilder<CallLogViewModel>.reactive(
         createNewModelOnInsert: true,
         builder: (context, model, child) {
           return Scaffold(
@@ -44,6 +44,6 @@ class CallLogsHomeView extends StatelessWidget {
           );
         },
         onModelReady: (model) => model.getCallLogs(),
-        viewModelBuilder: () => locator<CallLogHomeViewModel>());
+        viewModelBuilder: () => locator<CallLogViewModel>());
   }
 }

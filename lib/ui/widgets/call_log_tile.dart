@@ -1,63 +1,121 @@
 import 'package:call_log/call_log.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:scan_mo/core/exports.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class CallLogTile extends StatelessWidget {
-  final CallLogEntry callLogEntry;
+  final CallLogEntry? callLogEntry;
   const CallLogTile({
-    Key key,
+    Key? key,
     this.callLogEntry,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    print(callLogEntry.simDisplayName);
-    return Row(
+    return ExpansionTile(
+      title: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  getCallIcon() ?? SizedBox(),
+                  SizedBox(width: 5.w),
+                  CustomText(
+                    callLogEntry!.name ?? callLogEntry!.number!,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  SvgPicture.asset('sim'.svg),
+                  SizedBox(width: 10.w),
+                  CustomText(
+                    callLogEntry!.number ?? "Unknown",
+                    fontSize: 12,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xFFC8C4EB),
+                  ),
+                ],
+              ),
+            ],
+          ),
+          Spacer(),
+          CustomText(
+            '${convertToAgo(
+              DateTime.fromMillisecondsSinceEpoch(callLogEntry!.timestamp!),
+            )}',
+            fontWeight: FontWeight.w400,
+            fontSize: 12,
+            color: Color(0xFFC8C4EB),
+          ),
+          SizedBox(width: 10.w),
+          SvgPicture.asset('info_square'.svg),
+        ],
+      ),
       children: [
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                getCallIcon() ?? SizedBox(),
-                SizedBox(width: 5.w),
-                CustomText(
-                  callLogEntry.name ?? callLogEntry.number,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
+        Container(
+          color: Color(0xFFF1F1F1),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: MediaQuery.of(context).size.width / 2 - 18.w,
+                alignment: Alignment.center,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: () async {
+                        await FlutterPhoneDirectCaller.callNumber(
+                            callLogEntry!.number!);
+                      },
+                      child: SvgPicture.asset('call'.svg),
+                    ),
+                    SizedBox(width: 5.w),
+                    CustomText(
+                      'Call',
+                      color: BrandColors.secondary,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            Row(
-              children: [
-                SvgPicture.asset('sim'.svg),
-                SizedBox(width: 10.w),
-                CustomText(
-                  callLogEntry.number,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Color(0xFFC8C4EB),
+              ),
+              Container(
+                width: 2,
+                color: Color(0xFFC8C4EB),
+                height: 60.h,
+              ),
+              Container(
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width / 2 - 18.w,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset('message'.svg),
+                    CustomText(
+                      'Message',
+                      color: BrandColors.secondary,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                    ),
+                    //SizedBox(width: 58.w),
+                  ],
                 ),
-              ],
-            ),
-          ],
+              ),
+            ],
+          ),
         ),
-        Spacer(),
-        CustomText(
-          '${convertToAgo(
-            DateTime.fromMillisecondsSinceEpoch(callLogEntry.timestamp),
-          )}',
-          fontWeight: FontWeight.w400,
-          fontSize: 12,
-          color: Color(0xFFC8C4EB),
-        ),
-        SizedBox(width: 10.w),
-        SvgPicture.asset('info_square'.svg),
       ],
     );
   }
 
   getCallIcon() {
-    switch (callLogEntry.callType) {
+    switch (callLogEntry!.callType) {
       case CallType.incoming:
         return SvgPicture.asset(
           'incoming_arrow'.svg,
@@ -95,13 +153,13 @@ class CallLogTile extends StatelessWidget {
   String convertToAgo(DateTime input) {
     Duration diff = DateTime.now().difference(input);
     if (diff.inDays >= 30) {
-      return '${diff.inDays ~/ 30} month(s) ago';
+      return '${diff.inDays ~/ 30} months ago';
     } else if (diff.inDays >= 1) {
-      return '${diff.inDays} day(s) ago';
+      return '${diff.inDays} days ago';
     } else if (diff.inHours >= 1) {
-      return '${diff.inHours} hour(s) ago';
+      return '${diff.inHours} hrs. ago';
     } else if (diff.inMinutes >= 1) {
-      return '${diff.inMinutes} minute(s) ago';
+      return '${diff.inMinutes} mins. ago';
     } else {
       return 'just now';
     }

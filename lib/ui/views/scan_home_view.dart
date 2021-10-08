@@ -6,8 +6,6 @@ import 'package:scan_mo/core/view_models/scan_home_view_model.dart';
 import 'package:scan_mo/ui/widgets/call_to_action_card.dart';
 
 class ScanHomeView extends StatelessWidget {
-  const ScanHomeView({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ScanHomeViewModel>.reactive(
@@ -44,7 +42,13 @@ class ScanHomeView extends StatelessWidget {
                         ),
                         CircleAvatar(
                           radius: 20.r,
-                          backgroundColor: BrandColors.secondary,
+                          backgroundColor: BrandColors.yellow,
+                          child: CustomText(
+                            'S',
+                            color: Colors.white,
+                            fontSize: 26,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ],
                     ),

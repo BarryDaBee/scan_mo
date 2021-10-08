@@ -1,8 +1,8 @@
 import 'package:scan_mo/core/exports.dart';
 
 class CustomElevatedButton extends StatelessWidget {
-  final VoidCallback onPressed;
-  final String text;
+  final VoidCallback? onPressed;
+  final String? text;
   CustomElevatedButton({this.onPressed, this.text});
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scan_mo/locator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:scan_mo/ui/views/home_view.dart';
 import 'package:scan_mo/ui/views/onboarding_view.dart';
 import 'package:scan_mo/core/routes.dart' as routes;
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: OnboardingView(),
+        home: HomeView(),
       ),
     );
   }

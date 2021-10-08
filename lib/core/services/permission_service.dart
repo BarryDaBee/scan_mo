@@ -9,7 +9,7 @@ class PermissionService {
       final Map<Permission, PermissionStatus> permissionStatus =
           await [Permission.contacts].request();
       print("requested");
-      return permissionStatus[Permission.contacts];
+      return permissionStatus[Permission.contacts]!;
     }
 
     return permission;

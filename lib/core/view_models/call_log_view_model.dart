@@ -3,7 +3,7 @@ import 'package:scan_mo/core/exports.dart';
 import 'package:scan_mo/core/services/call_log_service.dart';
 import 'package:scan_mo/core/services/permission_service.dart';
 
-class CallLogHomeViewModel extends BaseViewModel {
+class CallLogViewModel extends BaseViewModel {
   final callLogService = locator<CallLogService>();
   Iterable<CallLogEntry>? callLogs;
   final permissionService = locator<PermissionService>();

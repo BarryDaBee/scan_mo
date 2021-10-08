@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:scan_mo/core/exports.dart';
 import 'package:scan_mo/core/routes.dart';
+import 'contacts_view.dart';
 import 'scan_home_view.dart';
 
-import 'call_logs_home_view.dart';
+import 'call_logs_view.dart';
 
 class HomeView extends StatefulWidget {
-  HomeView({Key key}) : super(key: key);
-
   @override
   State<HomeView> createState() => _HomeViewState();
 }
@@ -24,9 +23,9 @@ class _HomeViewState extends State<HomeView> {
       context,
       controller: _controller,
       screens: [
-        CallLogsHomeView(),
+        CallLogsView(),
         ScanHomeView(),
-        ScanHomeView(),
+        ContactsView(),
       ],
       backgroundColor: Colors.white,
       hideNavigationBarWhenKeyboardShows: true,
@@ -63,7 +62,12 @@ class _HomeViewState extends State<HomeView> {
           routeAndNavigatorSettings: RouteAndNavigatorSettings(
             onGenerateRoute: onGenerateRoute,
           ),
-          icon: Icon(Icons.person),
+          icon: SvgPicture.asset(
+            'profile'.svg,
+            color: isActiveIndex(2)
+                ? BrandColors.secondary
+                : Colors.black.withOpacity(0.3),
+          ),
           activeColorPrimary: BrandColors.secondary,
           inactiveColorPrimary: Colors.black.withOpacity(0.3),
         ),

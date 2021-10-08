@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:scan_mo/ui/shared/colors.dart';
+
 import 'package:scan_mo/ui/widgets/custom_elevated_button.dart';
-import 'package:scan_mo/ui/widgets/custom_text.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GetStartedButton extends StatefulWidget {
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   GetStartedButton({this.onPressed});
   @override
   _GetStartedButtonState createState() => _GetStartedButtonState();
@@ -13,9 +11,9 @@ class GetStartedButton extends StatefulWidget {
 
 class _GetStartedButtonState extends State<GetStartedButton>
     with TickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
-  Animation<double> _animation;
+  late Animation<double> _animation;
 
   @override
   void initState() {

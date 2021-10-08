@@ -3,15 +3,15 @@ import 'package:scan_mo/core/exports.dart';
 import 'dart:math' as math;
 
 class CallToActionCard extends StatelessWidget {
-  final String title;
-  final String imageUrl;
-  final bool rotateImage;
-  final VoidCallback action;
-  final double scaleBy;
+  final String? title;
+  final String? imageUrl;
+  final bool? rotateImage;
+  final VoidCallback? action;
+  final double? scaleBy;
 
   const CallToActionCard(
-      {Key key,
-      this.title,
+      {Key? key,
+      @required this.title,
       this.action,
       @required this.imageUrl,
       this.rotateImage = false,
@@ -53,23 +53,23 @@ class CallToActionCard extends StatelessWidget {
               Positioned(
                 left: 0,
                 top: 0,
-                child: rotateImage
+                child: rotateImage!
                     ? Transform.scale(
-                        scale: scaleBy,
+                        scale: scaleBy!,
                         child: Transform(
                           alignment: Alignment.center,
                           transform: Matrix4.rotationY(math.pi),
                           child: Image.asset(
-                            imageUrl,
+                            imageUrl!,
                             width: 146.w,
                             height: 186.h,
                           ),
                         ),
                       )
                     : Transform.scale(
-                        scale: scaleBy,
+                        scale: scaleBy!,
                         child: Image.asset(
-                          imageUrl,
+                          imageUrl!,
                           width: 146.w,
                           height: 186.h,
                         ),
@@ -81,7 +81,7 @@ class CallToActionCard extends StatelessWidget {
                 child: SizedBox(
                   width: 149.w,
                   child: CustomText(
-                    title,
+                    title!,
                     fontSize: 18,
                     textAlign: TextAlign.center,
                     color: Colors.white,
