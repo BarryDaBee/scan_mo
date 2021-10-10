@@ -1,4 +1,5 @@
 import 'package:mobile_number/mobile_number.dart';
+import 'package:scan_mo/core/models/user.dart';
 import 'package:scan_mo/core/services/shared_prefs_service.dart';
 
 import '../exports.dart';
@@ -11,6 +12,8 @@ class SharePersonalContactViewModel extends BaseViewModel {
   String? displayName;
   String? currentSimData;
 
+  String? user;
+
   void switchToSim({required int simIndex}) {
     if (activeSimIndex != simIndex) {
       activeSimIndex = simIndex;
@@ -21,7 +24,9 @@ class SharePersonalContactViewModel extends BaseViewModel {
   }
 
   initializeScreen() async {
-    displayName = _sharedPrefsService.name!;
+    user = User(name: _sharedPrefsService.name!, phoneNumber: '09013240048')
+        .toJson();
+    displayName = _sharedPrefsService.name;
     setBusy(true);
     if (await MobileNumber.hasPhonePermission) {
       _cards = await MobileNumber.getSimCards!;

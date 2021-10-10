@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class User {
   final String? name;
   final String? phoneNumber;
@@ -8,9 +10,9 @@ class User {
       : name = json['name'],
         phoneNumber = json['phoneNumber'];
   toJson() {
-    return {
+    return jsonEncode({
       'name': this.name,
       'phoneNumber': this.phoneNumber,
-    };
+    });
   }
 }

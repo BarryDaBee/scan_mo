@@ -106,7 +106,7 @@ class SharePersonalContactView extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(18),
                                 ),
                                 child: QrImage(
-                                  data: model.currentSimData!,
+                                  data: model.user!,
                                 ),
                               ),
                               Positioned(

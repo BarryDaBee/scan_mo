@@ -13,7 +13,7 @@ class ContactsViewModel extends BaseViewModel {
 
   void getContacts() async {
     setBusy(true);
-    //await permissionService.getContactsPermission();
+
     Iterable<contact.Contact> rawContacts = await contactsService.getContacts();
 
     rawContacts.forEach((element) {

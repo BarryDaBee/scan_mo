@@ -5,6 +5,7 @@ import 'package:scan_mo/ui/views/home_view.dart';
 import 'package:scan_mo/ui/views/onboarding_view.dart';
 import 'package:scan_mo/core/routes.dart' as routes;
 
+import 'core/services/permission_service.dart';
 import 'core/services/shared_prefs_service.dart';
 
 void main() async {
@@ -12,6 +13,8 @@ void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
   SharedPrefsService _sharedPrefsService = locator<SharedPrefsService>();
+  PermissionService permissionService = locator<PermissionService>();
+  permissionService.requestPermissions();
   await _sharedPrefsService.initialize();
   runApp(MyApp());
 }
@@ -30,7 +33,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: share(),
+        home: _sharedPrefsService.isOldUser! ? HomeView() : OnboardingView(),
       ),
     );
   }
