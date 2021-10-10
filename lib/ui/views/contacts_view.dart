@@ -71,7 +71,7 @@ class ContactCard extends StatelessWidget {
               padding: EdgeInsets.all(9.r),
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: BrandColors.grey,
+                color: AppColors.grey,
               ),
               child: SizedBox(
                 height: 32.r,

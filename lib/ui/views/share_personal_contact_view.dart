@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_number/mobile_number.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:scan_mo/core/exports.dart';
 import 'package:scan_mo/core/view_models/share_personal_contact_view_model.dart';
@@ -35,7 +34,7 @@ class SharePersonalContactView extends StatelessWidget {
                                 alignment: Alignment.center,
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: BrandColors.secondary),
+                                    color: AppColors.secondary),
                                 child: Icon(
                                   Icons.arrow_back_ios,
                                   color: Colors.white,
@@ -49,7 +48,7 @@ class SharePersonalContactView extends StatelessWidget {
                                 'Share your personal contact',
                                 style: GoogleFonts.poppins(
                                   fontWeight: FontWeight.w700,
-                                  color: BrandColors.primary,
+                                  color: AppColors.primary,
                                   fontSize: 23,
                                 ),
                                 textAlign: TextAlign.center,
@@ -63,17 +62,17 @@ class SharePersonalContactView extends StatelessWidget {
                           padding: EdgeInsets.symmetric(
                               horizontal: 12.w, vertical: 6.h),
                           decoration: BoxDecoration(
-                            color: BrandColors.secondary,
+                            color: AppColors.secondary,
                             borderRadius: BorderRadius.circular(18),
                           ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Hero(
-                                tag: 'profile',
+                                tag: 'avatar',
                                 child: CircleAvatar(
                                   radius: 35.r,
-                                  backgroundColor: BrandColors.yellow,
+                                  backgroundColor: AppColors.yellow,
                                   child: CustomText(
                                     'S',
                                     color: Colors.white,
@@ -101,12 +100,11 @@ class SharePersonalContactView extends StatelessWidget {
                                 height: 371.h,
                                 padding: EdgeInsets.all(15.r),
                                 decoration: BoxDecoration(
-                                  color:
-                                      BrandColors.secondary.withOpacity(0.38),
+                                  color: AppColors.secondary.withOpacity(0.38),
                                   borderRadius: BorderRadius.circular(18),
                                 ),
                                 child: QrImage(
-                                  data: model.user!,
+                                  data: model.userPrimary!,
                                 ),
                               ),
                               Positioned(
@@ -114,7 +112,7 @@ class SharePersonalContactView extends StatelessWidget {
                                 left: 10.w,
                                 child: SelectedSimCard(
                                   index: 0,
-                                  simCard: model.cards[0],
+                                  phoneType: 'Primary',
                                   onSelected: () {
                                     model.switchToSim(simIndex: 0);
                                   },
@@ -126,7 +124,7 @@ class SharePersonalContactView extends StatelessWidget {
                                 right: 10.w,
                                 child: SelectedSimCard(
                                   index: 1,
-                                  simCard: model.cards[1],
+                                  phoneType: 'Secondary',
                                   onSelected: () {
                                     model.switchToSim(simIndex: 1);
                                   },
@@ -149,14 +147,14 @@ class SelectedSimCard extends StatefulWidget {
   final bool isActive;
   final VoidCallback? onSelected;
   final int? index;
-  final SimCard? simCard;
+  final String? phoneType;
 
   const SelectedSimCard(
       {Key? key,
       this.isActive = false,
       this.onSelected,
       @required this.index,
-      this.simCard})
+      this.phoneType})
       : super(key: key);
 
   @override
@@ -201,7 +199,7 @@ class _SelectedSimCardState extends State<SelectedSimCard>
             child: Container(
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                color: widget.isActive ? BrandColors.yellow : BrandColors.grey,
+                color: widget.isActive ? AppColors.yellow : AppColors.grey,
                 borderRadius: BorderRadius.circular(18),
               ),
               height: 47.h,
@@ -220,7 +218,7 @@ class _SelectedSimCardState extends State<SelectedSimCard>
                   children: [
                     SvgPicture.asset(
                       'sim'.svg,
-                      color: BrandColors.secondary,
+                      color: AppColors.secondary,
                       height: 29.h,
                       width: 26.h,
                     ),
@@ -238,7 +236,7 @@ class _SelectedSimCardState extends State<SelectedSimCard>
                 ),
                 SizedBox(width: 10.w),
                 CustomText(
-                  widget.simCard!.displayName ?? '9mobile',
+                  widget.phoneType,
                   fontWeight: FontWeight.w700,
                   fontSize: 14,
                   color: widget.isActive ? Colors.white : Color(0xFF7B7B7B),

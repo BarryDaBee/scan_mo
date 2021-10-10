@@ -47,7 +47,7 @@ class CallToActionCard extends StatelessWidget {
                 top: 48.h,
                 child: CircleAvatar(
                   radius: 36.5.r,
-                  backgroundColor: BrandColors.yellow,
+                  backgroundColor: AppColors.yellow,
                 ),
               ),
               Positioned(

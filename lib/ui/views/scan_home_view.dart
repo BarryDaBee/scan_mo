@@ -1,4 +1,3 @@
-import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scan_mo/core/exports.dart';
@@ -31,22 +30,22 @@ class ScanHomeView extends StatelessWidget {
                             CustomText(
                               'Hey, ${model.userName}',
                               fontWeight: FontWeight.w700,
-                              color: BrandColors.primary,
+                              color: AppColors.primary,
                               fontSize: 18,
                             ),
                             CustomText(
                               'Welcome Back',
                               fontWeight: FontWeight.w500,
                               fontSize: 18,
-                              color: BrandColors.primary,
+                              color: AppColors.primary,
                             ),
                           ],
                         ),
                         Hero(
-                          tag: 'profile',
+                          tag: 'avatar',
                           child: CircleAvatar(
                             radius: 20.r,
-                            backgroundColor: BrandColors.yellow,
+                            backgroundColor: AppColors.yellow,
                             child: CustomText(
                               'S',
                               color: Colors.white,
@@ -72,10 +71,7 @@ class ScanHomeView extends StatelessWidget {
                       imageUrl: 'assets/images/onboarding_phone_user.png',
                       rotateImage: true,
                       scaleBy: 1.2,
-                      action: () async {
-                        var result = await BarcodeScanner.scan();
-                        print(result.rawContent);
-                      },
+                      action: model.scanAndSave,
                     ),
                     SizedBox(height: 30.h),
                     CallToActionCard(

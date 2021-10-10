@@ -10,7 +10,6 @@ import 'core/services/shared_prefs_service.dart';
 
 void main() async {
   setupLocator();
-
   WidgetsFlutterBinding.ensureInitialized();
   SharedPrefsService _sharedPrefsService = locator<SharedPrefsService>();
   PermissionService permissionService = locator<PermissionService>();
@@ -33,7 +32,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: _sharedPrefsService.isOldUser! ? HomeView() : OnboardingView(),
+        home:
+            OnboardingView(), //_sharedPrefsService.isOldUser! ? HomeView() : ,
       ),
     );
   }

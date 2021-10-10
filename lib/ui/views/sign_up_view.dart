@@ -10,7 +10,10 @@ class SignUpView extends StatefulWidget {
 
 class _SignUpViewState extends State<SignUpView> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController _textEditingController = TextEditingController();
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _primaryPhoneController = TextEditingController();
+  TextEditingController _secondaryPhoneController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<SignUpViewModel>.reactive(
@@ -27,47 +30,94 @@ class _SignUpViewState extends State<SignUpView> {
                 children: [
                   CustomText(
                     'Personalize your experience',
-                    fontSize: 18,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w700,
                     textAlign: TextAlign.center,
-                    color: BrandColors.primary,
+                    color: AppColors.primary,
                   ),
                   SizedBox(height: 5.h),
                   CustomText(
-                    'Hey, we’re gonna need you to add your name and image, you can also pick an avatar if you want',
+                    'Hey, we’re gonna need you to add your name and at least one number ; )',
                     fontSize: 12,
                     textAlign: TextAlign.center,
-                    color: BrandColors.primary,
+                    color: AppColors.primary,
                   ),
                   SizedBox(height: 26.h),
                   Form(
                     key: _formKey,
-                    child: SizedBox(
-                      height: 70.h,
-                      width: 327.w,
-                      child: TextFormField(
-                        controller: _textEditingController,
-                        validator: (text) {
-                          if (text == null || text.isEmpty) {
-                            return 'Please enter some text';
-                          }
-                          return null;
-                        },
-                        decoration: InputDecoration(
-                          contentPadding: EdgeInsets.only(top: 5.w, left: 10.w),
-                          labelText: 'Name',
-                          hintText: 'Adejare',
-                          labelStyle: GoogleFonts.poppins(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700,
-                            color: BrandColors.primary,
-                          ),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(4),
-                            borderSide: BorderSide(width: 0.5),
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          controller: _nameController,
+                          validator: (text) {
+                            if (text == null || text.isEmpty) {
+                              return 'Please enter some text';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.only(top: 5.w, left: 10.w),
+                            labelText: 'Name',
+                            hintText: 'e.g Barry Boluwatife',
+                            labelStyle: GoogleFonts.poppins(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.primary,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                              borderSide: BorderSide(width: 0.5),
+                            ),
                           ),
                         ),
-                      ),
+                        SizedBox(height: 30.h),
+                        TextFormField(
+                          keyboardType: TextInputType.phone,
+                          controller: _primaryPhoneController,
+                          validator: (text) {
+                            if (text == null || text.isEmpty) {
+                              return 'Please enter a valid phone number';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.only(top: 5.w, left: 10.w),
+                            labelText: 'Primary phone',
+                            hintText: 'e.g 081000000...',
+                            labelStyle: GoogleFonts.poppins(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.primary,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                              borderSide: BorderSide(width: 0.5),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 30.h),
+                        TextFormField(
+                          keyboardType: TextInputType.phone,
+                          controller: _secondaryPhoneController,
+                          decoration: InputDecoration(
+                            contentPadding:
+                                EdgeInsets.only(top: 5.w, left: 10.w),
+                            labelText: 'Secondary phone',
+                            hintText: 'e.g 081000000...',
+                            labelStyle: GoogleFonts.poppins(
+                              fontSize: 18.sp,
+                              fontWeight: FontWeight.w700,
+                              color: AppColors.primary,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(4),
+                              borderSide: BorderSide(width: 0.5),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   // SizedBox(height: 25.h),
@@ -135,8 +185,11 @@ class _SignUpViewState extends State<SignUpView> {
                     text: "Done",
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        model.setUserName(_textEditingController.value.text);
-                        print(_textEditingController.value.text);
+                        model.setUserName(_nameController.value.text);
+                        model.setPrimaryPhone(
+                            _primaryPhoneController.value.text);
+                        model.setSecondaryPhone(
+                            _secondaryPhoneController.value.text);
                         model.markAsOldUser();
                         Navigator.pushNamed(context, HOME_VIEW_ROUTE);
                       }

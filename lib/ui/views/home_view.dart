@@ -44,7 +44,7 @@ class _HomeViewState extends State<HomeView> {
           icon: SvgPicture.asset(
             'calling'.svg,
             color: isActiveIndex(0)
-                ? BrandColors.secondary
+                ? AppColors.secondary
                 : Colors.black.withOpacity(0.3),
           ),
         ),
@@ -55,7 +55,7 @@ class _HomeViewState extends State<HomeView> {
           icon: SvgPicture.asset(
             'scan'.svg,
             color: isActiveIndex(1)
-                ? BrandColors.secondary
+                ? AppColors.secondary
                 : Colors.black.withOpacity(0.3),
           ),
         ),
@@ -66,10 +66,10 @@ class _HomeViewState extends State<HomeView> {
           icon: SvgPicture.asset(
             'profile'.svg,
             color: isActiveIndex(2)
-                ? BrandColors.secondary
+                ? AppColors.secondary
                 : Colors.black.withOpacity(0.3),
           ),
-          activeColorPrimary: BrandColors.secondary,
+          activeColorPrimary: AppColors.secondary,
           inactiveColorPrimary: Colors.black.withOpacity(0.3),
         ),
       ],

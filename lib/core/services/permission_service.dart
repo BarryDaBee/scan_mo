@@ -7,25 +7,30 @@ import 'package:permission_handler/permission_handler.dart';
 class PermissionService {
   // getContactsPermission() async {}
   void requestPermissions() async {
-    PermissionStatus contactsPermission = await Permission.contacts.status;
-    PermissionStatus cameraPermission = await Permission.camera.status;
-    PermissionStatus phonePermission = await Permission.phone.status;
+    try {
+      PermissionStatus contactsPermission = await Permission.contacts.status;
+      PermissionStatus cameraPermission = await Permission.camera.status;
+      PermissionStatus phonePermission = await Permission.phone.status;
 
-    if (cameraPermission.isGranted &&
-        phonePermission.isGranted &&
-        contactsPermission.isGranted) {
-    } else {
-      cameraPermission = await Permission.camera.request();
-      phonePermission = await Permission.phone.request();
-      contactsPermission = await Permission.contacts.request();
       if (cameraPermission.isGranted &&
           phonePermission.isGranted &&
           contactsPermission.isGranted) {
       } else {
-        Fluttertoast.showToast(
-            msg: 'Camera, Contacts, Call log and phone permission required');
-        AppSettings.openAppSettings();
+        cameraPermission = await Permission.camera.request();
+        phonePermission = await Permission.phone.request();
+        contactsPermission = await Permission.contacts.request();
+        if (cameraPermission.isGranted &&
+            phonePermission.isGranted &&
+            contactsPermission.isGranted) {
+        } else {
+          Fluttertoast.showToast(
+              msg: 'Camera, Contacts, Call log and phone permission required');
+          AppSettings.openAppSettings();
+        }
       }
+    } catch (e) {
+      "An unknown error occured. Please restart app";
+      exit(0);
     }
   }
 }

@@ -77,7 +77,7 @@ class CallLogTile extends StatelessWidget {
                       SizedBox(width: 5.w),
                       CustomText(
                         'Call',
-                        color: BrandColors.secondary,
+                        color: AppColors.secondary,
                         fontWeight: FontWeight.w400,
                         fontSize: 12,
                       ),
@@ -104,7 +104,7 @@ class CallLogTile extends StatelessWidget {
                       SizedBox(width: 5.w),
                       CustomText(
                         'Message',
-                        color: BrandColors.secondary,
+                        color: AppColors.secondary,
                         fontWeight: FontWeight.w400,
                         fontSize: 12,
                       ),
@@ -141,7 +141,7 @@ class CallLogTile extends StatelessWidget {
       case CallType.rejected:
         return Icon(
           Icons.block,
-          color: BrandColors.yellow,
+          color: AppColors.yellow,
           size: 15,
         );
       case CallType.blocked:

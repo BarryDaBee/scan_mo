@@ -42,7 +42,7 @@ class _AnimatedFlatIndicatorState extends State<AnimatedFlatIndicator>
       width: 30.w * _controller!.value,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(7.r),
-        color: BrandColors.primary,
+        color: AppColors.primary,
       ),
     );
   }

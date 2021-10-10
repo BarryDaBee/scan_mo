@@ -2,17 +2,17 @@ import 'dart:convert';
 
 class User {
   final String? name;
-  final String? phoneNumber;
+  final List<String>? phoneNumbers;
 
-  User({this.name, this.phoneNumber});
+  User({this.name, this.phoneNumbers});
 
   User.fromJson(Map json)
       : name = json['name'],
-        phoneNumber = json['phoneNumber'];
+        phoneNumbers = json['phoneNumbers'];
   toJson() {
     return jsonEncode({
       'name': this.name,
-      'phoneNumber': this.phoneNumber,
+      'phoneNumbers': this.phoneNumbers,
     });
   }
 }

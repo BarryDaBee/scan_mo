@@ -8,6 +8,14 @@ class SignUpViewModel extends BaseViewModel {
     _sharedPrefsService.name = name;
   }
 
+  void setPrimaryPhone(String phone) {
+    _sharedPrefsService.primaryPhone = phone;
+  }
+
+  void setSecondaryPhone(String phone) {
+    _sharedPrefsService.secondaryPhone = phone;
+  }
+
   void markAsOldUser() {
     _sharedPrefsService.markAsOldUser();
   }

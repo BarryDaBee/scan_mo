@@ -21,14 +21,10 @@ class ContactsViewModel extends BaseViewModel {
         Contact(
           displayName:
               element.displayName ?? element.phones!.toList().first.toString(),
-          givenName: element.givenName ?? 'hhh',
           phoneNumber: element.phones!.toList(),
           tagIndex: element.displayName![0],
         ),
       );
-    });
-    contacts!.forEach((element) {
-      print(element.givenName);
     });
     contacts!.sort((a, b) =>
         a.displayName!.toLowerCase().compareTo(b.displayName!.toLowerCase()));

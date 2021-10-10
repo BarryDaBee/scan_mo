@@ -21,7 +21,7 @@ class CustomPageIndicator extends StatelessWidget {
             height: 10.r,
             width: 10.r,
             decoration:
-                BoxDecoration(shape: BoxShape.circle, color: BrandColors.grey),
+                BoxDecoration(shape: BoxShape.circle, color: AppColors.grey),
           );
         }
       }),

@@ -27,7 +27,7 @@ class OnboardingView extends StatelessWidget {
                         opacity: model.pageIndex != 2 ? 1 : 0,
                         child: CustomText(
                           "Skip",
-                          color: BrandColors.primary,
+                          color: AppColors.primary,
                           fontSize: 13,
                         ),
                       ),
@@ -66,7 +66,7 @@ class OnboardingView extends StatelessWidget {
                             child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   padding: EdgeInsets.zero,
-                                  primary: BrandColors.secondary,
+                                  primary: AppColors.secondary,
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5))),
                               onPressed: () {
@@ -110,7 +110,7 @@ class OnboardingViewOne extends StatelessWidget {
           "Share your contacts faster than you can say \"Idiosyncratic\".",
           fontSize: 18,
           textAlign: TextAlign.center,
-          color: BrandColors.primary,
+          color: AppColors.primary,
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 22.h),
@@ -118,7 +118,7 @@ class OnboardingViewOne extends StatelessWidget {
           "We're offering you the ability to share contacts faster and more conveniently.",
           textAlign: TextAlign.center,
           fontSize: 12.5,
-          color: BrandColors.primary,
+          color: AppColors.primary,
         ),
       ],
     );
@@ -136,7 +136,7 @@ class OnboardingViewTwo extends StatelessWidget {
           "Don't be held up on the inconsistencies sharing a contact",
           fontSize: 18,
           textAlign: TextAlign.center,
-          color: BrandColors.primary,
+          color: AppColors.primary,
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 14.h),
@@ -144,7 +144,7 @@ class OnboardingViewTwo extends StatelessWidget {
           "Inconsistent methods should be a thing of the past",
           textAlign: TextAlign.center,
           fontSize: 12.5,
-          color: BrandColors.primary,
+          color: AppColors.primary,
         ),
       ],
     );
@@ -163,7 +163,7 @@ class OnboardingViewThree extends StatelessWidget {
           " The power of peer to peer sharing is now in your hands ",
           fontSize: 18,
           textAlign: TextAlign.center,
-          color: BrandColors.primary,
+          color: AppColors.primary,
           fontWeight: FontWeight.w700,
         ),
         SizedBox(height: 11.h),
@@ -171,7 +171,7 @@ class OnboardingViewThree extends StatelessWidget {
           "With great power comes great responsibility",
           textAlign: TextAlign.center,
           fontSize: 12.5,
-          color: BrandColors.primary,
+          color: AppColors.primary,
         ),
       ],
     );
