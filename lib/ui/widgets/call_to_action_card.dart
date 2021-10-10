@@ -33,7 +33,7 @@ class CallToActionCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(18.r),
             gradient: LinearGradient(
               colors: [
-                Color(0xFF9791D7).withOpacity(0.85),
+                Color(0xFF9791D7),
                 Color(0xFF574BCB),
               ],
               begin: Alignment.topLeft,

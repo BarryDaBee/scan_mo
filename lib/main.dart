@@ -5,16 +5,20 @@ import 'package:scan_mo/ui/views/home_view.dart';
 import 'package:scan_mo/ui/views/onboarding_view.dart';
 import 'package:scan_mo/core/routes.dart' as routes;
 
-import 'core/services/call_log_service.dart';
+import 'core/services/shared_prefs_service.dart';
 
 void main() async {
   setupLocator();
+
   WidgetsFlutterBinding.ensureInitialized();
+  SharedPrefsService _sharedPrefsService = locator<SharedPrefsService>();
+  await _sharedPrefsService.initialize();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+  final SharedPrefsService _sharedPrefsService = locator<SharedPrefsService>();
+  @override
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -26,7 +30,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: HomeView(),
+        home: share(),
       ),
     );
   }

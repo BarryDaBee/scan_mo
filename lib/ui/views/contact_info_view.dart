@@ -1,6 +1,7 @@
 import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:scan_mo/core/exports.dart';
 import 'package:scan_mo/core/models/contact.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactInfoView extends StatelessWidget {
   String getInitials(String name) {
@@ -61,7 +62,7 @@ class ContactInfoView extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                       CustomText(
-                        'Mobile',
+                        contact.phoneNumber![index].label,
                         color: Colors.black.withOpacity(0.3),
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
@@ -79,8 +80,13 @@ class ContactInfoView extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: 10.w),
-                  CircleContainer(
-                    child: SvgPicture.asset('message'.svg),
+                  InkWell(
+                    onTap: () async {
+                      await launch('sms:${contact.phoneNumber![index].value!}');
+                    },
+                    child: CircleContainer(
+                      child: SvgPicture.asset('message'.svg),
+                    ),
                   ),
                   SizedBox(width: 10.w),
                   CircleContainer(

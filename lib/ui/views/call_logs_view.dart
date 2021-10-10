@@ -8,39 +8,45 @@ class CallLogsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<CallLogViewModel>.reactive(
-        createNewModelOnInsert: true,
+        disposeViewModel: false,
         builder: (context, model, child) {
           return Scaffold(
-            body: model.isBusy
-                ? Center(child: CircularProgressIndicator())
-                : Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 60.h),
-                        CustomText(
-                          'Call Logs',
-                          fontWeight: FontWeight.w700,
-                          fontSize: 24,
-                        ),
-                        SizedBox(height: 10.h),
-                        Expanded(
-                          child: ListView.builder(
-                            physics: BouncingScrollPhysics(),
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) {
-                              return CallLogTile(
-                                callLogEntry: model.callLogs!.elementAt(index),
-                              );
+            body: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 60.h),
+                  CustomText(
+                    'Call Logs',
+                    fontWeight: FontWeight.w700,
+                    fontSize: 24,
+                  ),
+                  SizedBox(height: 10.h),
+                  model.isBusy
+                      ? Center(child: CircularProgressIndicator())
+                      : Expanded(
+                          child: RefreshIndicator(
+                            onRefresh: () async {
+                              model.getCallLogs();
                             },
-                            itemCount: model.callLogs!.length,
+                            child: ListView.builder(
+                              physics: BouncingScrollPhysics(),
+                              padding: EdgeInsets.zero,
+                              shrinkWrap: true,
+                              itemBuilder: (context, index) {
+                                return CallLogTile(
+                                  callLogEntry:
+                                      model.callLogs!.elementAt(index),
+                                );
+                              },
+                              itemCount: model.callLogs!.length,
+                            ),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
+                ],
+              ),
+            ),
           );
         },
         onModelReady: (model) => model.getCallLogs(),

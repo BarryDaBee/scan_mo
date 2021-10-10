@@ -62,27 +62,27 @@ class CallLogTile extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                width: MediaQuery.of(context).size.width / 2 - 18.w,
-                alignment: Alignment.center,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    InkWell(
-                      onTap: () async {
-                        await FlutterPhoneDirectCaller.callNumber(
-                            callLogEntry!.number!);
-                      },
-                      child: SvgPicture.asset('call'.svg),
-                    ),
-                    SizedBox(width: 5.w),
-                    CustomText(
-                      'Call',
-                      color: BrandColors.secondary,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                    ),
-                  ],
+              InkWell(
+                onTap: () async {
+                  await FlutterPhoneDirectCaller.callNumber(
+                      callLogEntry!.number!);
+                },
+                child: Container(
+                  width: MediaQuery.of(context).size.width / 2 - 18.w,
+                  alignment: Alignment.center,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset('call'.svg),
+                      SizedBox(width: 5.w),
+                      CustomText(
+                        'Call',
+                        color: BrandColors.secondary,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                      ),
+                    ],
+                  ),
                 ),
               ),
               Container(
@@ -90,21 +90,27 @@ class CallLogTile extends StatelessWidget {
                 color: Color(0xFFC8C4EB),
                 height: 60.h,
               ),
-              Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width / 2 - 18.w,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset('message'.svg),
-                    CustomText(
-                      'Message',
-                      color: BrandColors.secondary,
-                      fontWeight: FontWeight.w400,
-                      fontSize: 12,
-                    ),
-                    //SizedBox(width: 58.w),
-                  ],
+              InkWell(
+                onTap: () async {
+                  await launch('sms:${callLogEntry!.number!}');
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: MediaQuery.of(context).size.width / 2 - 18.w,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset('message'.svg),
+                      SizedBox(width: 5.w),
+                      CustomText(
+                        'Message',
+                        color: BrandColors.secondary,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                      ),
+                      //SizedBox(width: 58.w),
+                    ],
+                  ),
                 ),
               ),
             ],

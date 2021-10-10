@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:scan_mo/core/route_constants.dart';
+import 'package:scan_mo/ui/route_animations.dart';
 import 'package:scan_mo/ui/views/call_logs_view.dart';
 import 'package:scan_mo/ui/views/contact_info_view.dart';
 import 'package:scan_mo/ui/views/home_view.dart';
@@ -26,10 +27,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ONBOARDING_ROUTE:
       return MaterialPageRoute(builder: (context) => OnboardingView());
     case SIGN_UP_ROUTE:
-      return MaterialPageRoute(builder: (context) => SignUpView());
+      return SlideDownRoute(view: SignUpView());
     case SHARE_PERSONAL_CONTACT_ROUTE:
-      return MaterialPageRoute(
-          builder: (context) => SharePersonalContactView());
+      return FadeInRoute(view: SharePersonalContactView());
     default:
       return MaterialPageRoute(builder: (context) => Container());
   }

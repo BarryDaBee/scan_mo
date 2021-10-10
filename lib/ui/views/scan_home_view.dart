@@ -1,3 +1,4 @@
+import 'package:barcode_scan2/barcode_scan2.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scan_mo/core/exports.dart';
@@ -9,6 +10,7 @@ class ScanHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ScanHomeViewModel>.reactive(
+        disposeViewModel: false,
         builder: (context, model, child) {
           return Scaffold(
             body: Padding(
@@ -27,7 +29,7 @@ class ScanHomeView extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             CustomText(
-                              'Hey, Shola',
+                              'Hey, ${model.userName}',
                               fontWeight: FontWeight.w700,
                               color: BrandColors.primary,
                               fontSize: 18,
@@ -40,14 +42,17 @@ class ScanHomeView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        CircleAvatar(
-                          radius: 20.r,
-                          backgroundColor: BrandColors.yellow,
-                          child: CustomText(
-                            'S',
-                            color: Colors.white,
-                            fontSize: 26,
-                            fontWeight: FontWeight.w700,
+                        Hero(
+                          tag: 'profile',
+                          child: CircleAvatar(
+                            radius: 20.r,
+                            backgroundColor: BrandColors.yellow,
+                            child: CustomText(
+                              'S',
+                              color: Colors.white,
+                              fontSize: 26,
+                              fontWeight: FontWeight.w700,
+                            ),
                           ),
                         ),
                       ],
@@ -67,6 +72,10 @@ class ScanHomeView extends StatelessWidget {
                       imageUrl: 'assets/images/onboarding_phone_user.png',
                       rotateImage: true,
                       scaleBy: 1.2,
+                      action: () async {
+                        var result = await BarcodeScanner.scan();
+                        print(result.rawContent);
+                      },
                     ),
                     SizedBox(height: 30.h),
                     CallToActionCard(

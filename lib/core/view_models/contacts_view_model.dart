@@ -17,7 +17,6 @@ class ContactsViewModel extends BaseViewModel {
     Iterable<contact.Contact> rawContacts = await contactsService.getContacts();
 
     rawContacts.forEach((element) {
-      print(element);
       contacts!.add(
         Contact(
           displayName:

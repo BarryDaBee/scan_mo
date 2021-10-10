@@ -9,6 +9,7 @@ class ContactsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ViewModelBuilder<ContactsViewModel>.reactive(
       onModelReady: (model) => model.getContacts(),
+      disposeViewModel: false,
       builder: (context, model, child) => Scaffold(
         body: model.isBusy
             ? Center(child: CircularProgressIndicator())
@@ -18,10 +19,13 @@ class ContactsView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 60.h),
-                    CustomText(
-                      'Contacts',
-                      fontWeight: FontWeight.w700,
-                      fontSize: 24,
+                    InkWell(
+                      onTap: model.getContacts,
+                      child: CustomText(
+                        'Contacts',
+                        fontWeight: FontWeight.w700,
+                        fontSize: 24,
+                      ),
                     ),
                     SizedBox(height: 10.h),
                     Expanded(
@@ -33,13 +37,12 @@ class ContactsView extends StatelessWidget {
                           needRebuild: true,
                         ),
                         itemBuilder: (context, index) {
-                          //print(index);
                           return ContactCard(
                             contact: model.contacts![index],
                           );
                         },
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
