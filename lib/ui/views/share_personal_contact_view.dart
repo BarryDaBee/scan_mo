@@ -104,7 +104,9 @@ class SharePersonalContactView extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(18),
                                 ),
                                 child: QrImage(
-                                  data: model.userPrimary!,
+                                  data: model.activePhoneIndex == 0
+                                      ? model.userPrimary!
+                                      : model.userSecondary!,
                                 ),
                               ),
                               Positioned(
@@ -116,7 +118,7 @@ class SharePersonalContactView extends StatelessWidget {
                                   onSelected: () {
                                     model.switchToSim(simIndex: 0);
                                   },
-                                  isActive: model.activeSimIndex == 0,
+                                  isActive: model.activePhoneIndex == 0,
                                 ),
                               ),
                               Positioned(
@@ -128,7 +130,7 @@ class SharePersonalContactView extends StatelessWidget {
                                   onSelected: () {
                                     model.switchToSim(simIndex: 1);
                                   },
-                                  isActive: model.activeSimIndex == 1,
+                                  isActive: model.activePhoneIndex == 1,
                                 ),
                               ),
                             ],

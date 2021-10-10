@@ -6,7 +6,7 @@ import '../exports.dart';
 
 class SharePersonalContactViewModel extends BaseViewModel {
   SharedPrefsService _sharedPrefsService = locator<SharedPrefsService>();
-  int activeSimIndex = 0;
+  int activePhoneIndex = 0;
   List<SimCard> _cards = [];
 
   List<SimCard> get cards => _cards;
@@ -17,8 +17,8 @@ class SharePersonalContactViewModel extends BaseViewModel {
   String? userSecondary;
 
   void switchToSim({required int simIndex}) {
-    if (activeSimIndex != simIndex) {
-      activeSimIndex = simIndex;
+    if (activePhoneIndex != simIndex) {
+      activePhoneIndex = simIndex;
       notifyListeners();
     }
     return;

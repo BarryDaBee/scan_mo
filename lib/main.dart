@@ -32,8 +32,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home:
-            OnboardingView(), //_sharedPrefsService.isOldUser! ? HomeView() : ,
+        home: _sharedPrefsService.isOldUser! ? HomeView() : OnboardingView(),
       ),
     );
   }

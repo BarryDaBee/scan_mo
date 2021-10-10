@@ -10,26 +10,27 @@ class AppContactsService {
     return ContactsService.getContacts()..then((print));
   }
 
-  saveJsonAsContact(String userJson) {
+  saveJsonAsContact(String userJson) async {
     var userData = jsonDecode(userJson);
-    try {
-      if (userData['name'] == null || userData['phoneNumber'] == null) {
-        Fluttertoast.showToast(
-            msg: 'Not a valid toast',
-            textColor: Colors.white,
-            backgroundColor: AppColors.secondary);
-      } else {
-        ContactsService.addContact(
-          Contact(
-            displayName: userData['name'],
-            phones: [
-              Item(label: 'mobile'),
-            ],
-          ),
-        );
-      }
-    } catch (e) {
-      Fluttertoast.showToast(msg: 'An unknown error occured: ${e}');
+    String? name = userData['name'];
+    List? phoneNumbers = userData['phoneNumbers'];
+    print(name);
+    print(phoneNumbers);
+    if (name == null || phoneNumbers == null) {
+      Fluttertoast.showToast(
+          msg: 'Not a valid toast',
+          textColor: Colors.white,
+          backgroundColor: AppColors.secondary);
+    } else {
+      await ContactsService.addContact(
+        Contact(
+          givenName: 'Scan-mo',
+          phones: [
+            Item(label: 'mobile', value: phoneNumbers[0]),
+          ],
+        ),
+      );
+      Fluttertoast.showToast(msg: '"${name}" has been saved successfully');
     }
     // try {
     //   jsonDecode(userJson);

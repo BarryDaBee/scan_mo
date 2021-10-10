@@ -55,6 +55,7 @@ class _SignUpViewState extends State<SignUpView> {
                             }
                             return null;
                           },
+                          textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
                             contentPadding:
                                 EdgeInsets.only(top: 5.w, left: 10.w),
@@ -81,6 +82,7 @@ class _SignUpViewState extends State<SignUpView> {
                             }
                             return null;
                           },
+                          textInputAction: TextInputAction.next,
                           decoration: InputDecoration(
                             contentPadding:
                                 EdgeInsets.only(top: 5.w, left: 10.w),
