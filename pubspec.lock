@@ -92,13 +92,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
+  device_frame:
+    dependency: transitive
+    description:
+      name: device_frame
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.4.2"
   device_preview:
     dependency: "direct main"
     description:
       name: device_preview
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.4-beta"
+    version: "0.7.4"
   fake_async:
     dependency: transitive
     description:
@@ -129,6 +136,11 @@ packages:
     version: "1.0.0"
   flutter:
     dependency: "direct main"
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  flutter_localizations:
+    dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -170,6 +182,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "8.0.8"
+  font_awesome_flutter:
+    dependency: transitive
+    description:
+      name: font_awesome_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "9.1.0"
+  freezed_annotation:
+    dependency: transitive
+    description:
+      name: freezed_annotation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.14.3"
   get_it:
     dependency: "direct main"
     description:
@@ -198,6 +224,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  intl:
+    dependency: transitive
+    description:
+      name: intl
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.17.0"
   js:
     dependency: transitive
     description:
@@ -205,6 +238,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.6.3"
+  json_annotation:
+    dependency: transitive
+    description:
+      name: json_annotation
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.1.0"
   matcher:
     dependency: transitive
     description:
@@ -386,7 +426,7 @@ packages:
       name: shared_preferences
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.3"
+    version: "2.0.8"
   shared_preferences_linux:
     dependency: transitive
     description:

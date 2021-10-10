@@ -30,7 +30,7 @@ class _SignUpViewState extends State<SignUpView> {
                 children: [
                   CustomText(
                     'Personalize your experience',
-                    fontSize: 18.sp,
+                    fontSize: 24,
                     fontWeight: FontWeight.w700,
                     textAlign: TextAlign.center,
                     color: AppColors.primary,
@@ -38,7 +38,7 @@ class _SignUpViewState extends State<SignUpView> {
                   SizedBox(height: 5.h),
                   CustomText(
                     'Hey, we’re gonna need you to add your name and at least one number ; )',
-                    fontSize: 12,
+                    fontSize: 14,
                     textAlign: TextAlign.center,
                     color: AppColors.primary,
                   ),
@@ -193,7 +193,8 @@ class _SignUpViewState extends State<SignUpView> {
                         model.setSecondaryPhone(
                             _secondaryPhoneController.value.text);
                         model.markAsOldUser();
-                        Navigator.pushNamed(context, HOME_VIEW_ROUTE);
+                        Navigator.pushNamedAndRemoveUntil(context,
+                            HOME_VIEW_ROUTE, (Route<dynamic> route) => false);
                       }
                     },
                   ),

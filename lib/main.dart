@@ -18,10 +18,7 @@ void main() async {
   permissionService.requestPermissions();
   await _sharedPrefsService.initialize();
   runApp(
-    DevicePreview(
-      enabled: !kReleaseMode,
-      child: ScanMo(),
-    ),
+    ScanMo(),
   );
 }
 
@@ -38,7 +35,7 @@ class ScanMo extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: _sharedPrefsService.isOldUser! ? HomeView() : OnboardingView(),
+        home: OnboardingView(),
       ),
     );
   }
