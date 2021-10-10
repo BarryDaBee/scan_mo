@@ -1,4 +1,3 @@
-import 'package:scan_mo/core/services/shared_prefs_service.dart';
 import '../exports.dart';
 
 class OnboardingViewModel extends BaseViewModel {

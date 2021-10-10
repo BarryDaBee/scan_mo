@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 import 'package:scan_mo/core/exports.dart';
 import 'package:scan_mo/core/routes.dart';
-import 'package:scan_mo/core/services/shared_prefs_service.dart';
 import 'contacts_view.dart';
 import 'scan_home_view.dart';
 

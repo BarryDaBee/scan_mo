@@ -9,8 +9,6 @@ import 'package:scan_mo/ui/views/onboarding_view.dart';
 import 'package:scan_mo/ui/views/share_personal_contact_view.dart';
 import 'package:scan_mo/ui/views/sign_up_view.dart';
 
-import 'models/contact.dart';
-
 Route<dynamic> onGenerateRoute(RouteSettings settings) {
   switch (settings.name) {
     case ScanHomeViewRoute:

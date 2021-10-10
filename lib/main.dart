@@ -1,3 +1,5 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:scan_mo/locator.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,19 +17,23 @@ void main() async {
   PermissionService permissionService = locator<PermissionService>();
   permissionService.requestPermissions();
   await _sharedPrefsService.initialize();
-  runApp(MyApp());
+  runApp(
+    DevicePreview(
+      enabled: !kReleaseMode,
+      child: ScanMo(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class ScanMo extends StatelessWidget {
   final SharedPrefsService _sharedPrefsService = locator<SharedPrefsService>();
-  @override
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: Size(375, 812),
       builder: () => MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Scan mo',
         onGenerateRoute: routes.onGenerateRoute,
         theme: ThemeData(
           primarySwatch: Colors.blue,

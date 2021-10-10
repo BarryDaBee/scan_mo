@@ -19,7 +19,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 // );
 class CallLogService {
   Future<Iterable<CallLogEntry>> getCallLogs() async {
-    var now = DateTime.now();
     // int from = now.subtract(Duration(days: 60)).millisecondsSinceEpoch;
     // int to = now.subtract(Duration(days: 30)).millisecondsSinceEpoch;
     try {

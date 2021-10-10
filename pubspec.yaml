@@ -42,7 +42,6 @@ dependencies:
   url_launcher: ^6.0.12
   flutter_phone_direct_caller: ^2.0.0
   sim_data: ^0.0.2
-  mobile_number: ^1.0.4
   shared_preferences: 2.0.3
   device_preview: ^0.1.4-beta
   fluttertoast: ^8.0.8
