@@ -18,3 +18,4 @@
 * Save contacts online and offline independent of the OS
 * Manage contact (delete, edit)
 * Implement dialer
+* Implement share friend's contact
