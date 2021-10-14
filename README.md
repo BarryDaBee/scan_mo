@@ -8,14 +8,17 @@
 ## Features 📌
 * Share contacts (including yours) via QR code
 * Scan and save numbers in less than 5 seconds
-* Make direct call
+* Make direct calls
 * Send messages to contacts
-* View contacts
+* View contacts details
+* Implement dialer
+* Implement share friend's contact
 
 
 ## Todo 📝
 * Allow users create online accounts
 * Save contacts online and offline independent of the OS
 * Manage contact (delete, edit)
-* Implement dialer
-* Implement share friend's contact
+* Add a profile section
+* Add user avatars
+* Design and add logo and app icon
