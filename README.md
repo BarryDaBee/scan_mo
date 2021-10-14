@@ -4,7 +4,7 @@
 
 [Barcode scan UI on Figma](https://www.figma.com/file/SwPzC4dlPFOY7ylp4ke3hF/Barcode-Contact-app?node-id=0%3A1)
 
-[Scan-Mo Android Apk download link](https://drive.google.com/file/d/1sL_MBC7VAZhw9sHBm6uw31tICbNDywGb/view?usp=sharing)
+[Scan-Mo Android Apk download link](https://drive.google.com/file/d/16M_H9RfeztXa5T3BmO69kLSgBtmLDnlP/view?usp=sharing)
 
 # ScanMo
 ### A simple contact management app
