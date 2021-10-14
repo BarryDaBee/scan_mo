@@ -11,8 +11,6 @@
 * Make direct calls
 * Send messages to contacts
 * View contacts details
-* Implement dialer
-* Implement share friend's contact
 
 
 ## Todo 📝
