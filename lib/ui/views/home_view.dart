@@ -40,33 +40,54 @@ class _HomeViewState extends State<HomeView> {
           routeAndNavigatorSettings: RouteAndNavigatorSettings(
             onGenerateRoute: onGenerateRoute,
           ),
-          icon: SvgPicture.asset(
-            'calling'.svg,
-            color: isActiveIndex(0)
-                ? AppColors.secondary
-                : Colors.black.withOpacity(0.3),
+          icon: Tooltip(
+            message: 'Call logs',
+            decoration: BoxDecoration(
+              color: AppColors.secondary,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: SvgPicture.asset(
+              'calling'.svg,
+              color: isActiveIndex(0)
+                  ? AppColors.secondary
+                  : Colors.black.withOpacity(0.3),
+            ),
           ),
         ),
         PersistentBottomNavBarItem(
           routeAndNavigatorSettings: RouteAndNavigatorSettings(
             onGenerateRoute: onGenerateRoute,
           ),
-          icon: SvgPicture.asset(
-            'scan'.svg,
-            color: isActiveIndex(1)
-                ? AppColors.secondary
-                : Colors.black.withOpacity(0.3),
+          icon: Tooltip(
+            message: 'Scan qr contact',
+            decoration: BoxDecoration(
+              color: AppColors.secondary,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: SvgPicture.asset(
+              'scan'.svg,
+              color: isActiveIndex(1)
+                  ? AppColors.secondary
+                  : Colors.black.withOpacity(0.3),
+            ),
           ),
         ),
         PersistentBottomNavBarItem(
           routeAndNavigatorSettings: RouteAndNavigatorSettings(
             onGenerateRoute: onGenerateRoute,
           ),
-          icon: SvgPicture.asset(
-            'profile'.svg,
-            color: isActiveIndex(2)
-                ? AppColors.secondary
-                : Colors.black.withOpacity(0.3),
+          icon: Tooltip(
+            message: 'Contacts',
+            decoration: BoxDecoration(
+              color: AppColors.secondary,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: SvgPicture.asset(
+              'profile'.svg,
+              color: isActiveIndex(2)
+                  ? AppColors.secondary
+                  : Colors.black.withOpacity(0.3),
+            ),
           ),
           activeColorPrimary: AppColors.secondary,
           inactiveColorPrimary: Colors.black.withOpacity(0.3),

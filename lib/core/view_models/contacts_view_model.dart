@@ -11,7 +11,7 @@ class ContactsViewModel extends BaseViewModel {
 
   List<Contact>? contacts = [];
 
-  void getContacts() async {
+  Future getContacts() async {
     setBusy(true);
 
     Iterable<contact.Contact> rawContacts = await contactsService.getContacts();

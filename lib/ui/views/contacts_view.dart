@@ -8,7 +8,6 @@ class ContactsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ViewModelBuilder<ContactsViewModel>.reactive(
-      onModelReady: (model) => model.getContacts(),
       disposeViewModel: false,
       builder: (context, model, child) => Scaffold(
         body: model.isBusy
@@ -35,6 +34,14 @@ class ContactsView extends StatelessWidget {
                         physics: BouncingScrollPhysics(),
                         indexBarOptions: IndexBarOptions(
                           needRebuild: true,
+                          selectTextStyle: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
+                          selectItemDecoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(5),
+                            color: AppColors.secondary,
+                          ),
                         ),
                         itemBuilder: (context, index) {
                           return ContactCard(

@@ -6,7 +6,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 class PermissionService {
   // getContactsPermission() async {}
-  void requestPermissions() async {
+  Future<void> requestPermissions() async {
     try {
       PermissionStatus contactsPermission = await Permission.contacts.status;
       PermissionStatus cameraPermission = await Permission.camera.status;

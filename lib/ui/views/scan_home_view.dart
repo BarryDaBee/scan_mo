@@ -23,15 +23,20 @@ class ScanHomeView extends StatelessWidget {
                     SizedBox(height: 60.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CustomText(
-                              'Hey, ${model.userName}',
-                              fontWeight: FontWeight.w700,
-                              color: AppColors.primary,
-                              fontSize: 18,
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 2 / 3,
+                              child: CustomText(
+                                'Hey, ${model.userName}',
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.primary,
+                                textOverflow: TextOverflow.ellipsis,
+                                fontSize: 18,
+                              ),
                             ),
                             CustomText(
                               'Welcome Back',
@@ -41,16 +46,21 @@ class ScanHomeView extends StatelessWidget {
                             ),
                           ],
                         ),
-                        Hero(
-                          tag: 'avatar',
-                          child: CircleAvatar(
-                            radius: 20.r,
-                            backgroundColor: AppColors.yellow,
-                            child: CustomText(
-                              'S',
-                              color: Colors.white,
-                              fontSize: 26,
-                              fontWeight: FontWeight.w700,
+                        InkWell(
+                          onTap: () {
+                            /// TODO: Add edit profile dialog
+                          },
+                          child: Hero(
+                            tag: 'avatar',
+                            child: CircleAvatar(
+                              radius: 20.r,
+                              backgroundColor: AppColors.yellow,
+                              child: CustomText(
+                                model.userName[0],
+                                color: Colors.white,
+                                fontSize: 26,
+                                fontWeight: FontWeight.w700,
+                              ),
                             ),
                           ),
                         ),
@@ -71,13 +81,18 @@ class ScanHomeView extends StatelessWidget {
                       imageUrl: 'assets/images/onboarding_phone_user.png',
                       rotateImage: true,
                       scaleBy: 1.2,
-                      action: model.scanAndSave,
+                      action: () {
+                        model.scanAndSave(context);
+                      },
                     ),
                     SizedBox(height: 30.h),
                     CallToActionCard(
                       title: 'Share a friend\'s contact',
                       imageUrl: 'assets/images/share_friend_contact.png',
                       scaleBy: 1.5,
+                      action: () {
+                        Navigator.pushNamed(context, CONTACTS_ROUTE);
+                      },
                     ),
                     SizedBox(height: 20.h),
                   ],

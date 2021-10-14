@@ -74,7 +74,7 @@ class SharePersonalContactView extends StatelessWidget {
                                   radius: 35.r,
                                   backgroundColor: AppColors.yellow,
                                   child: CustomText(
-                                    'S',
+                                    model.displayName![0],
                                     color: Colors.white,
                                     fontSize: 26,
                                     fontWeight: FontWeight.w700,
@@ -83,9 +83,10 @@ class SharePersonalContactView extends StatelessWidget {
                               ),
                               CustomText(
                                 model.displayName!.toUpperCase(),
-                                fontSize: 24,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white,
+                                textOverflow: TextOverflow.ellipsis,
                               ),
                               SizedBox(width: 20.w),
                             ],
@@ -124,13 +125,22 @@ class SharePersonalContactView extends StatelessWidget {
                               Positioned(
                                 bottom: 0,
                                 right: 10.w,
-                                child: SelectedSimCard(
-                                  index: 1,
-                                  phoneType: 'Secondary',
-                                  onSelected: () {
-                                    model.switchToSim(simIndex: 1);
-                                  },
-                                  isActive: model.activePhoneIndex == 1,
+                                child: IgnorePointer(
+                                  ignoring: model.userSecondary == null,
+                                  child: Opacity(
+                                    opacity:
+                                        model.userSecondary == null ? 0.45 : 1,
+                                    child: SelectedSimCard(
+                                      index: 1,
+                                      phoneType: model.userSecondary == null
+                                          ? 'Unavailable'
+                                          : 'Secondary',
+                                      onSelected: () {
+                                        model.switchToSim(simIndex: 1);
+                                      },
+                                      isActive: model.activePhoneIndex == 1,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ],

@@ -49,6 +49,7 @@ class _SignUpViewState extends State<SignUpView> {
                       children: [
                         TextFormField(
                           controller: _nameController,
+                          maxLength: 20,
                           validator: (text) {
                             if (text == null || text.isEmpty) {
                               return 'Please enter some text';

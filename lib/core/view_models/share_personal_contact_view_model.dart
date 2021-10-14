@@ -29,14 +29,18 @@ class SharePersonalContactViewModel extends BaseViewModel {
         // _sharedPrefsService.secondaryPhone!
       ],
     ).toJson();
-    userSecondary = User(
-      name: _sharedPrefsService.name!,
-      phoneNumbers: [
-        // _sharedPrefsService.primaryPhone!,
-        _sharedPrefsService.secondaryPhone!
-      ],
-    ).toJson();
 
+    if (_sharedPrefsService.secondaryPhone!.isNotEmpty) {
+      userSecondary = User(
+        name: _sharedPrefsService.name!,
+        phoneNumbers: [
+          // _sharedPrefsService.primaryPhone!,
+          _sharedPrefsService.secondaryPhone!
+        ],
+      ).toJson();
+    } else {
+      userSecondary = null;
+    }
     displayName = _sharedPrefsService.name;
   }
 }

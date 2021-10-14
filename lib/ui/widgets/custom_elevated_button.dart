@@ -8,7 +8,7 @@ class CustomElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 45,
-      width: double.infinity,
+      width: double.maxFinite,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: AppColors.secondary,

@@ -133,7 +133,7 @@ class OnboardingViewTwo extends StatelessWidget {
         Image.asset("assets/images/onboarding_phone_user.png",
             height: 302.r + 51.h, width: 302.r),
         CustomText(
-          "Don't be held up on the inconsistencies sharing a contact",
+          "Don't be held up on the inconsistencies of sharing a contact",
           fontSize: 18,
           textAlign: TextAlign.center,
           color: AppColors.primary,

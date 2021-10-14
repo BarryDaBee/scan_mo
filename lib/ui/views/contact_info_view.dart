@@ -70,33 +70,56 @@ class ContactInfoView extends StatelessWidget {
                     ],
                   ),
                   Spacer(),
-                  InkWell(
+                  ContactActionButton(
                     onTap: () async {
                       await FlutterPhoneDirectCaller.callNumber(
                           contact.phoneNumber![index].value!);
                     },
-                    child: CircleContainer(
-                      child: SvgPicture.asset('call'.svg),
-                    ),
+                    iconChild: SvgPicture.asset('call'.svg),
                   ),
                   SizedBox(width: 10.w),
-                  InkWell(
+                  ContactActionButton(
                     onTap: () async {
                       await launch('sms:${contact.phoneNumber![index].value!}');
                     },
-                    child: CircleContainer(
-                      child: SvgPicture.asset('message'.svg),
-                    ),
+                    iconChild: SvgPicture.asset('message'.svg),
                   ),
                   SizedBox(width: 10.w),
-                  CircleContainer(
-                    child: SvgPicture.asset('scan'.svg),
-                  ),
+                  ContactActionButton(
+                    onTap: () {
+                      Navigator.pushNamed(context, SHARE_FRIEND_CONTACT_ROUTE,
+                          arguments: {
+                            'name': contact.displayName!,
+                            'phoneNumbers': [
+                              contact.phoneNumber![index].value,
+                            ],
+                          });
+                    },
+                    iconChild: SvgPicture.asset('scan'.svg),
+                  )
                 ],
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class ContactActionButton extends StatelessWidget {
+  final VoidCallback? onTap;
+  final Widget? iconChild;
+
+  const ContactActionButton({Key? key, this.onTap, required this.iconChild})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: CircleContainer(
+        child: iconChild,
       ),
     );
   }

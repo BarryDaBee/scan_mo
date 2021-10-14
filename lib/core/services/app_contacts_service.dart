@@ -7,7 +7,7 @@ import '../exports.dart';
 
 class AppContactsService {
   Future<Iterable<Contact>> getContacts() {
-    return ContactsService.getContacts()..then((print));
+    return ContactsService.getContacts();
   }
 
   saveJsonAsContact(String userJson) async {
@@ -24,9 +24,9 @@ class AppContactsService {
     } else {
       await ContactsService.addContact(
         Contact(
-          givenName: 'Scan-mo',
+          givenName: userData['name'],
           phones: [
-            Item(label: 'mobile', value: phoneNumbers[0]),
+            Item(label: 'scan-mo', value: phoneNumbers[0]),
           ],
         ),
       );
