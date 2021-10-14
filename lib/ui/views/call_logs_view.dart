@@ -12,10 +12,6 @@ class CallLogsView extends StatefulWidget {
 
 class _CallLogsViewState extends State<CallLogsView> {
   ScrollController _scrollController = ScrollController();
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

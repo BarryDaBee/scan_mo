@@ -42,16 +42,19 @@ class Keypad extends StatelessWidget {
                               GestureDetector(
                                 onLongPress: model.clearAll,
                                 onTap: model.popLastNumber,
-                                child: Icon(
-                                  Icons.backspace,
-                                  color: Color(0xFFC4C4C4),
+                                child: SizedBox(
+                                  width: 40.w,
+                                  height: 30.h,
+                                  child: SvgPicture.asset(
+                                    'clear'.svg,
+                                  ),
                                 ),
                               ),
                             ],
                           ),
                         )
                       : Container(),
-                  Divider(),
+                  model.phoneNumberInput.isNotEmpty ? Divider() : Container(),
                   Container(
                     child: Table(
                       children: [

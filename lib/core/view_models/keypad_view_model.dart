@@ -10,7 +10,8 @@ class KeypadViewModel extends BaseViewModel {
   }
 
   void makeCall() async {
-    await FlutterPhoneDirectCaller.callNumber(phoneNumberInput);
+    if (phoneNumberInput.isNotEmpty)
+      await FlutterPhoneDirectCaller.callNumber(phoneNumberInput);
   }
 
   void clearAll() {
