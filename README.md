@@ -21,4 +21,4 @@
 * Manage contact (delete, edit)
 * Add a profile section
 * Add user avatars
-* Design and add logo and app icon
+* Design and add logo
