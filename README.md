@@ -11,11 +11,13 @@
 * Make direct call
 * Send messages to contacts
 * View contacts
+* Implement dialer
+* Implement share friend's contact
 
 
 ## Todo 📝
 * Allow users create online accounts
 * Save contacts online and offline independent of the OS
 * Manage contact (delete, edit)
-* Implement dialer
-* Implement share friend's contact
+* Add a profile section
+* Add user avatars
