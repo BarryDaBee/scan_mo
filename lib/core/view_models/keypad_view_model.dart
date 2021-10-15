@@ -14,6 +14,11 @@ class KeypadViewModel extends BaseViewModel {
       await FlutterPhoneDirectCaller.callNumber(phoneNumberInput);
   }
 
+  void setPhoneNumberTo(phoneNumber) {
+    phoneNumberInput = phoneNumber;
+    notifyListeners();
+  }
+
   void clearAll() {
     phoneNumberInput = '';
     notifyListeners();

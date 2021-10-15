@@ -64,8 +64,9 @@ class CallLogTile extends StatelessWidget {
             children: [
               InkWell(
                 onTap: () async {
-                  await FlutterPhoneDirectCaller.callNumber(
+                  var _ = await FlutterPhoneDirectCaller.callNumber(
                       callLogEntry!.number!);
+                  print(_);
                 },
                 child: Container(
                   width: MediaQuery.of(context).size.width / 2 - 18.w,

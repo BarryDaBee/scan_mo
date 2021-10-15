@@ -19,13 +19,7 @@ void main() async {
   ContactsViewModel contactsModel = locator<ContactsViewModel>();
   await _sharedPrefsService.initialize();
   await permissionService.requestPermissions();
-  runApp(
-    DevicePreview(
-      builder: (context) {
-        return ScanMo();
-      },
-    ),
-  );
+  runApp(ScanMo());
   contactsModel.getContacts();
 }
 
