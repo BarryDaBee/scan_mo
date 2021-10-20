@@ -7,7 +7,7 @@
 [Scan-Mo Android Apk download link](https://drive.google.com/file/d/16M_H9RfeztXa5T3BmO69kLSgBtmLDnlP/view?usp=sharing)
 
 # ScanMo
-### A simple contact management app
+> A simple contact management app
 
 ## Features 📌
 * Share contacts (including yours) via QR code
